@@ -1,3 +1,4 @@
+import { ApplicationError } from "src/shared/errors/ApplicationError";
 import { inject, injectable } from "tsyringe";
 
 import { IDeleteClientDTO } from "../../dtos/IDeleteClientDTO";
@@ -15,6 +16,10 @@ class DeleteClientUseCase {
   }
 
   async execute({ id }: IDeleteClientDTO): Promise<void> {
+    const clientExists = await this.repository.findById(id);
+
+    if (!clientExists) throw new ApplicationError("Client not found", 404);
+
     this.repository.delete({ id });
   }
 }
