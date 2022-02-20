@@ -1,7 +1,9 @@
+import { Address } from "src/modules/address/entities/Address";
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -28,6 +30,9 @@ class Client {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToOne(() => Address, (address) => address.client)
+  address: Address;
 }
 
 export { Client };

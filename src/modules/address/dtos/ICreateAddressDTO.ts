@@ -6,6 +6,7 @@ interface ICreateAddressDTO {
   city: string;
   state: string;
   zipcode: string;
+  client_id: number;
 }
 
 export { ICreateAddressDTO };
