@@ -18,7 +18,7 @@ interface IAddressRepository {
     zipcode,
   }: ICreateAddressDTO): Promise<void>;
 
-  list(): Promise<Address>;
+  list(): Promise<Address[]>;
 
   update({
     id,
