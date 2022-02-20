@@ -1,3 +1,4 @@
+import { ApplicationError } from "src/shared/errors/ApplicationError";
 import { inject, injectable } from "tsyringe";
 
 import { ICreateClientDTO } from "../../dtos/ICreateClientDTO";
@@ -22,7 +23,8 @@ class CreateClientUseCase {
   }: ICreateClientDTO): Promise<void> {
     const clientAlreadyExists = await this.repository.findByCNPJ(cnpj);
 
-    if (clientAlreadyExists) throw new Error("Client already exists");
+    if (clientAlreadyExists)
+      throw new ApplicationError("Client already exists", 409);
 
     this.repository.create({ cnpj, corporate_name, contact_name, phone });
   }
