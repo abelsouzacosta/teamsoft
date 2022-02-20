@@ -20,6 +20,10 @@ class CreateClientUseCase {
     contact_name,
     phone,
   }: ICreateClientDTO): Promise<void> {
+    const clientAlreadyExists = await this.repository.findByCNPJ(cnpj);
+
+    if (clientAlreadyExists) throw new Error("Client already exists");
+
     this.repository.create({ cnpj, corporate_name, contact_name, phone });
   }
 }
