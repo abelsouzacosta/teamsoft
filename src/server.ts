@@ -3,6 +3,8 @@ import express from "express";
 
 import "dotenv/config";
 
+import "./database";
+
 const app = express();
 
 app.get("/", (req, res) => {
