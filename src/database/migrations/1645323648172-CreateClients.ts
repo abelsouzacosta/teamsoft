@@ -38,6 +38,7 @@ export class CreateClients1645323648172 implements MigrationInterface {
           {
             name: "updated_at",
             type: "timestamp",
+            default: "now()",
           },
         ],
       })
