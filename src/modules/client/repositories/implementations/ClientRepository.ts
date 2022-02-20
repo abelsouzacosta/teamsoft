@@ -13,6 +13,10 @@ class ClientRepository implements IClientRepository {
     this.repository = getRepository(Client);
   }
 
+  async list(): Promise<Client[]> {
+    return this.repository.find();
+  }
+
   async findById(id: number): Promise<Client | undefined> {
     const client = await this.repository.findOne({
       where: {

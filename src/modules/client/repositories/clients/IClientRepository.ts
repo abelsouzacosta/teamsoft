@@ -8,6 +8,8 @@ interface IClientRepository {
 
   findByCNPJ(cnpj: string): Promise<Client | undefined>;
 
+  list(): Promise<Client[]>;
+
   create({
     cnpj,
     corporate_name,
