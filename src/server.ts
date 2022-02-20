@@ -4,6 +4,7 @@ import express from "express";
 import "dotenv/config";
 
 import "./database";
+import "./shared/container";
 
 const app = express();
 
