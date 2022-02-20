@@ -12,7 +12,7 @@ class Client {
   id: number;
 
   @Column()
-  cpnj: string;
+  cnpj: string;
 
   @Column()
   corporate_name: string;
