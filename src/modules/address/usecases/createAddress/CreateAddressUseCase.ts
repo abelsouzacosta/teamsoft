@@ -1,3 +1,4 @@
+import { IClientRepository } from "src/modules/client/repositories/clients/IClientRepository";
 import { ApplicationError } from "src/shared/errors/ApplicationError";
 import { inject, injectable } from "tsyringe";
 
@@ -7,12 +8,15 @@ import { IAddressRepository } from "../../repositories/address/IAddressRepositor
 @injectable()
 class CreateAddressUseCase {
   private repository: IAddressRepository;
+  private clientsRepository: IClientRepository;
 
   constructor(
     @inject("AddressRepository")
-    repository: IAddressRepository
+    repository: IAddressRepository,
+    @inject("ClientRepository")
+    clientsRepository: IClientRepository
   ) {
-    Object.assign(this, { repository });
+    Object.assign(this, { repository, clientsRepository });
   }
 
   async execute({
@@ -25,6 +29,10 @@ class CreateAddressUseCase {
     zipcode,
     client_id,
   }: ICreateAddressDTO): Promise<void> {
+    const clientExists = await this.clientsRepository.findById(client_id);
+
+    if (!clientExists) throw new ApplicationError("Client not found", 404);
+
     const clientAlreadyHaveAnAddress = await this.repository.findByClient(
       client_id
     );
