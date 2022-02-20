@@ -16,6 +16,7 @@ interface IAddressRepository {
     city,
     state,
     zipcode,
+    client_id,
   }: ICreateAddressDTO): Promise<void>;
 
   list(): Promise<Address[]>;
@@ -29,6 +30,7 @@ interface IAddressRepository {
     city,
     state,
     zipcode,
+    client_id,
   }: IUpdateAddressDTO): Promise<void>;
 
   delete({ id }: IDeleteAddressDTO): Promise<void>;
