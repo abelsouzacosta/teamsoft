@@ -10,6 +10,8 @@ interface IClientRepository {
 
   list(): Promise<Client[]>;
 
+  getDetails(id: number): Promise<Client | undefined>;
+
   create({
     cnpj,
     corporate_name,

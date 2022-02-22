@@ -27,6 +27,17 @@ class ClientRepository implements IClientRepository {
     return client;
   }
 
+  async getDetails(id: number): Promise<Client | undefined> {
+    const client = await this.repository.findOne({
+      where: {
+        id,
+      },
+      relations: ["address"],
+    });
+
+    return client;
+  }
+
   async findByCNPJ(cnpj: string): Promise<Client | undefined> {
     const client = await this.repository.findOne({
       where: {
