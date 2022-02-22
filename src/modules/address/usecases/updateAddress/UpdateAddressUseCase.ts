@@ -34,7 +34,9 @@ class UpdateAddressUseCase {
 
     if (!address) throw new ApplicationError("Address not found", 404);
 
-    const client = await this.clientRepository.findById(client_id);
+    const client = client_id
+      ? await this.clientRepository.findById(client_id)
+      : address.client_id;
 
     if (!client) throw new ApplicationError("Client not found", 404);
 
