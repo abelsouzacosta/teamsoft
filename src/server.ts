@@ -1,7 +1,7 @@
 import "reflect-metadata";
+import { errors } from "celebrate";
 import express from "express";
 import "express-async-errors";
-
 import "dotenv/config";
 
 import "./database";
@@ -13,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(router);
+app.use(errors());
 app.use(errorHandler);
 
 const { PORT } = process.env;
