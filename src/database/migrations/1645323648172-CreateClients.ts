@@ -21,6 +21,7 @@ export class CreateClients1645323648172 implements MigrationInterface {
           {
             name: "corporate_name",
             type: "varchar",
+            isUnique: true,
           },
           {
             name: "contact_name",
