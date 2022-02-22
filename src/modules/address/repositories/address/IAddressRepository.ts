@@ -6,7 +6,7 @@ import { Address } from "../../entities/Address";
 interface IAddressRepository {
   findById(id: number): Promise<Address | undefined>;
 
-  findByClient(client_id: number): Promise<Address | undefined>;
+  findByClientId(client_id: number): Promise<Address | undefined>;
 
   create({
     place,

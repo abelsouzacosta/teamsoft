@@ -24,7 +24,7 @@ class GetAddressByClientIdUseCase {
 
     if (!client) throw new ApplicationError("Client not found", 404);
 
-    const address = await this.repository.findByClient(client_id);
+    const address = await this.repository.findByClientId(client_id);
 
     return address;
   }

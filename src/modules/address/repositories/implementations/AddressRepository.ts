@@ -23,7 +23,7 @@ class AddressRepository implements IAddressRepository {
     return address;
   }
 
-  async findByClient(client_id: number): Promise<Address | undefined> {
+  async findByClientId(client_id: number): Promise<Address | undefined> {
     const address = await this.repository.findOne({
       where: {
         client_id,
