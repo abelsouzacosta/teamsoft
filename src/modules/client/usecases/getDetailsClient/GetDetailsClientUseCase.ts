@@ -15,12 +15,12 @@ class GetDetailsClientUseCase {
     Object.assign(this, { repository });
   }
 
-  async execute(client_id: number): Promise<Client | undefined> {
-    const client = await this.repository.findById(client_id);
+  async execute(id: number): Promise<Client | undefined> {
+    const client = await this.repository.findById(id);
 
     if (!client) throw new ApplicationError("Client not found", 404);
 
-    const clientDetails = await this.repository.getDetails(client_id);
+    const clientDetails = await this.repository.getDetails(id);
 
     return clientDetails;
   }
