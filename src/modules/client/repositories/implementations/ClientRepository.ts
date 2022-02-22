@@ -48,6 +48,18 @@ class ClientRepository implements IClientRepository {
     return client;
   }
 
+  async findByCorporateName(
+    corporate_name: string
+  ): Promise<Client | undefined> {
+    const client = await this.repository.findOne({
+      where: {
+        corporate_name,
+      },
+    });
+
+    return client;
+  }
+
   async create({
     cnpj,
     corporate_name,
