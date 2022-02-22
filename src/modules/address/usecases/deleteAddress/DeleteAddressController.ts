@@ -13,7 +13,7 @@ class DeleteAddressController {
 
     await deleteAddressUseCase.execute(parsedId);
 
-    return response.status(200).send();
+    return response.status(202).send();
   }
 }
 
