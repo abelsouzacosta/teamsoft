@@ -33,7 +33,7 @@ class CreateAddressUseCase {
 
     if (!clientExists) throw new ApplicationError("Client not found", 404);
 
-    const clientAlreadyHaveAnAddress = await this.repository.findByClient(
+    const clientAlreadyHaveAnAddress = await this.repository.findByClientId(
       client_id
     );
 
