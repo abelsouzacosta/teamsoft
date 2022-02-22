@@ -8,6 +8,8 @@ interface IClientRepository {
 
   findByCNPJ(cnpj: string): Promise<Client | undefined>;
 
+  findByCorporateName(corporate_name: string): Promise<Client | undefined>;
+
   list(): Promise<Client[]>;
 
   getDetails(id: number): Promise<Client | undefined>;
