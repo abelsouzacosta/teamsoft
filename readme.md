@@ -57,4 +57,4 @@ TYPEORM_MIGRATIONS_DIR=src/database/migrations
 
 8. Execute a aplicação com `yarn dev` ou `npm run dev`
 
-A aplicação estará disponível em `http://localhost:3000` e a documentação para o seus endpoints estarpa disponível em `http://localhost:3000/api-docs`.
+A aplicação estará disponível em [http://localhost:3000](http://localhost:3000) e a documentação para o seus endpoints estarpa disponível em [http://localhost:3000/api-docs](http://localhost:3000/api-docs).
