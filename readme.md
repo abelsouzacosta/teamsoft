@@ -56,3 +56,5 @@ TYPEORM_MIGRATIONS_DIR=src/database/migrations
 7. Execute aas migrations do banco de dados: `yarn typeorm migration:run` ou `npm run typeorm migration:run`
 
 8. Execute a aplicação com `yarn dev` ou `npm run dev`
+
+A aplicação estará disponível em `http://localhost:3000` e a documentação para o seus endpoints estarpa disponível em `http://localhost:3000/api-docs`.
