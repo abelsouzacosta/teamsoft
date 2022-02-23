@@ -1,0 +1,650 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TeamSoft Challenge Documentation",
+    "description": "This is an Client Domain API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "abelsouzacosta@gmail.com"
+    }
+  },
+  "paths": {
+    "/clients": {
+      "post": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Create an new client instance",
+        "description": "Inserts a new client in the database",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cnpj": {
+                    "type": "string"
+                  },
+                  "corporate_name": {
+                    "type": "string"
+                  },
+                  "contact_name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "cnpj": "27339766000151",
+                  "corporate_name": "TEAMSOFT TECNOLOGIA E SISTEMAS LTDA",
+                  "contact_name": "Allan Carvalho",
+                  "phone": "2189033185"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "List all instances of clients",
+        "description": "Returns an array of clients instances",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "format": "integer"
+                      },
+                      "cnpj": {
+                        "type": "string"
+                      },
+                      "corporate_name": {
+                        "type": "string"
+                      },
+                      "contact_name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    },
+                    "example": {
+                      "id": 1,
+                      "cnpj": "27339766000151",
+                      "corporate_name": "TEAMSOFT TECNOLOGIA E SISTEMAS LTDA",
+                      "contact_name": "Allan Carvalho",
+                      "phone": "2189033185",
+                      "created_at": "2022-02-22T23:05:38.000Z",
+                      "updated_at": "2022-02-22T23:05:38.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clients/{id}": {
+      "put": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Update an client instance",
+        "description": "Update the client instance with the given id in request",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the client",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cnpj": {
+                    "type": "string"
+                  },
+                  "corporate_name": {
+                    "type": "string"
+                  },
+                  "contact_name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "cnpj": "27339766000151",
+                  "corporate_name": "TEAMSOFT TECNOLOGIA",
+                  "contact_name": "Allan Carvalho",
+                  "phone": "2189033185"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Delete an client instance",
+        "description": "Delete the client instance with the given id in request",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the client",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Details of a client",
+        "description": "list all informations of the client with the id given, including its address",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the client",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "format": "integer"
+                    },
+                    "cnpj": {
+                      "type": "string"
+                    },
+                    "corporate_name": {
+                      "type": "string"
+                    },
+                    "contact_name": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "place": {
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "number",
+                          "format": "integer"
+                        },
+                        "complement": {
+                          "type": "string"
+                        },
+                        "district": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "zipcode": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "client_id": {
+                          "type": "number",
+                          "format": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "id": 1,
+                    "cnpj": "06189213000190",
+                    "corporate_name": "EMPRESA LTDA",
+                    "contact_name": "EMPRESA FANTASIA",
+                    "phone": "70999993333",
+                    "created_at": "2022-02-22T20:24:09.000Z",
+                    "updated_at": "2022-02-22T20:24:09.000Z",
+                    "address": {
+                      "id": 1,
+                      "place": "Rua Aleatória",
+                      "number": 90,
+                      "complement": null,
+                      "district": "Bairro Do Limoeiro",
+                      "city": "São Paulo",
+                      "state": "São Paulo",
+                      "zipcode": "44056539",
+                      "created_at": "2022-02-22T20:24:24.000Z",
+                      "updated_at": "2022-02-22T20:24:24.000Z",
+                      "client_id": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description":"Not found"
+          },
+          "400": {
+            "description":"Bad Request"
+          }
+        }
+      }
+    },
+    "/clients/address/{id}": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Address of an client",
+        "description": "Gets the address of a client with the given id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the client",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "format": "integer"
+                    },
+                    "place": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "number",
+                      "format": "integer"
+                    },
+                    "complement": {
+                      "type": "string"
+                    },
+                    "district": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "zipcode": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "client_id": {
+                      "type": "number",
+                      "format": "integer"
+                    }
+                  },
+                  "example": {
+                    "id": 1,
+                    "place": "Rua Aleatória",
+                    "number": 0,
+                    "complement": null,
+                    "district": "Bairro Limoeiro",
+                    "city": "São Paulo",
+                    "state": "São Paulo",
+                    "zipcode": "44056539",
+                    "created_at": "2022-02-22T15:51:19.000Z",
+                    "updated_at": "2022-02-22T15:51:19.000Z",
+                    "client_id": 1
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "400": {
+            "description":"Bad Request"
+          }
+        }
+      }
+    },
+    "/address": {
+      "get": {
+        "tags": ["Address"],
+        "summary": "List all addresses",
+        "description": "Gets a list of all addresses in the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "format": "integer"
+                      },
+                      "place": {
+                        "type": "string"
+                      },
+                      "number": {
+                        "type": "number",
+                        "format": "integer"
+                      },
+                      "complement": {
+                        "type": "string"
+                      },
+                      "district": {
+                        "type": "string"
+                      },
+                      "city": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "zipcode": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "client_id": {
+                        "type": "number",
+                        "format": "integer"
+                      }
+                    },
+                    "example": {
+                      "id": 1,
+                      "place": "Rua Aleatória",
+                      "number": 0,
+                      "complement": null,
+                      "district": "Bairro Limoeiro",
+                      "city": "São Paulo",
+                      "state": "São Paulo",
+                      "zipcode": "44056539",
+                      "created_at": "2022-02-22T15:51:19.000Z",
+                      "updated_at": "2022-02-22T15:51:19.000Z",
+                      "client_id": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Address"],
+        "summary": "Create an address instance",
+        "description": "Creates a new instance of address",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "place": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "number",
+                    "format": "integer"
+                  },
+                  "complement": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "zipcode": {
+                    "type": "string"
+                  },
+                  "client_id": {
+                    "type": "number",
+                    "format": "integer"
+                  }
+                },
+                "example": {
+                  "place": "Random Place",
+                  "number": 90,
+                  "district": "Random District",
+                  "city": "Random City",
+                  "state": "Random State",
+                  "zipcode": "9090099",
+                  "client_id": 1
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/address/{id}": {
+      "put": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Update an address",
+        "description": "Update the address with the given id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the address",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "place": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "number",
+                    "format": "integer"
+                  },
+                  "complement": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "zipcode": {
+                    "type": "string"
+                  },
+                  "client_id": {
+                    "type": "number",
+                    "format": "integer"
+                  }
+                },
+                "example": {
+                  "place": "Random Place",
+                  "number": 90,
+                  "district": "Random District",
+                  "city": "Random City",
+                  "state": "Random State",
+                  "zipcode": "9090099",
+                  "client_id": 1
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description":"Not found"
+          },
+          "400": {
+            "description":"Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Delete an address",
+        "description": "Delete the address with the given id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the address",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description":"Not found"
+          },
+          "400": {
+            "description":"Bad Request"
+          }
+        }
+      }
+    }
+  }
+}
